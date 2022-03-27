@@ -2,6 +2,7 @@ import {Form,Row,Col,Button,Card} from 'react-bootstrap'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createTodo } from '../reducers/createTodoReducer'
+import Message from './Message'
 
 const TodoForm=()=>{
 
@@ -97,6 +98,9 @@ const TodoForm=()=>{
                 Submit
             </Button>
             </Form>
+            {
+                error && <Message variant="danger">{error}</Message>
+            }
         </Card>
     )
 }
