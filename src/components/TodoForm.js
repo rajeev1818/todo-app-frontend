@@ -14,9 +14,13 @@ const TodoForm=()=>{
         due_date:''
     })
 
+    const user=JSON.parse(localStorage.getItem('userLogin'))
+
     const dispatch=useDispatch()
 
     const [error,setError]=useState('')
+
+
 
 
     const onChangeHandler=(e)=>{
@@ -36,7 +40,7 @@ const TodoForm=()=>{
         }
         else{
             
-            dispatch(createTodo(state))
+            dispatch(createTodo({user,state}))
             setState({
                 todo:'',
                 category:'WORK',

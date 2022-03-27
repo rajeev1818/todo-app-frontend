@@ -2,11 +2,11 @@ import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 import authService from '../api/authService'
 import { addNew } from './getTodosReducer'
 
-const user=JSON.parse(localStorage.getItem('userLogin'))
 
-export const createTodo=createAsyncThunk('createTodo',async(todo,thunkAPI)=>{
+
+export const createTodo=createAsyncThunk('createTodo',async(obj,thunkAPI)=>{
     try {
-        const result=await authService.createTodo(user,todo)
+        const result=await authService.createTodo(obj.user,obj.state)
         thunkAPI.dispatch(addNew(result))
         return result
     } catch (error) {
